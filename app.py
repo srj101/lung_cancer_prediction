@@ -1,5 +1,24 @@
 import streamlit as st
 from pathlib import Path
+import subprocess
+import sys
+
+# Function to install dependencies from requirements.txt
+
+
+def install_requirements():
+    try:
+        # Attempt to install requirements
+        subprocess.check_call(
+            [sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+        print("Requirements installed successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred while installing requirements: {e}")
+        st.error("There was an error installing the necessary requirements.")
+
+
+# Install requirements before running the app
+install_requirements()
 
 # Function to read markdown files
 
