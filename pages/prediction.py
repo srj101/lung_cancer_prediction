@@ -2,20 +2,9 @@ import tensorflow as tf
 from PIL import Image
 import numpy as np
 import streamlit as st
-import requests
-
-url = "https://www.dropbox.com/scl/fi/fb5gvt4ehhlamhyo1s6uj/model.keras?rlkey=iknbm3gry32jluy23i1otythn&st=ok2so732&dl=1"
-r = requests.get(url)
-
-with open('model.keras', 'wb') as f:
-    f.write(r.content)
 
 
 st.title("Prediction")
-
-# Google Drive File ID for the model
-# Replace with your actual ID
-MODEL_URL = "https://drive.google.com/uc?id=1hM70fRdbtZ6GusaRPKRqfBYGdz73mY3c"
 
 
 @st.cache(allow_output_mutation=True)
