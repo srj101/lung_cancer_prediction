@@ -1,8 +1,15 @@
-import gdown
 import tensorflow as tf
 from PIL import Image
 import numpy as np
 import streamlit as st
+import requests
+
+url = "https://www.dropbox.com/scl/fi/fb5gvt4ehhlamhyo1s6uj/model.keras?rlkey=iknbm3gry32jluy23i1otythn&st=ok2so732&dl=1"
+r = requests.get(url)
+
+with open('model.keras', 'wb') as f:
+    f.write(r.content)
+
 
 st.title("Prediction")
 
@@ -15,7 +22,6 @@ MODEL_URL = "https://drive.google.com/uc?id=1hM70fRdbtZ6GusaRPKRqfBYGdz73mY3c"
 def load_model():
     model_path = "model.keras"
     # Download the model from Google Drive if it's not already present
-    gdown.download(MODEL_URL, model_path, quiet=False)
     model = tf.keras.models.load_model(model_path)
     return model
 
